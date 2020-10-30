@@ -1,0 +1,133 @@
+﻿@model DacSan.Areas.Guest.Models.InfoGuestModel
+@using DataLibrary.Models;
+
+@{
+    ViewBag.Title = "Thông tin người mua";
+    UsersModel user = null;
+    if (ViewData["user"] != null) {
+        user = (UsersModel)ViewData["user"];
+    };
+}
+<section id="container">
+    <div class="f_quanly">
+        <div class="breacrum">
+            <ul class="ul-breacrum list-inline" style="list-style: none">
+                <li>
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                    </a>
+
+                </li>
+                <li><i class="fa fa-chevron-right"></i></li>
+                <li>
+                    <a href="/Guest/Cart">Thông tin giỏ hàng</a>
+                </li>
+            </ul><!-- End .ul-breacrum -->
+
+        </div><!-- End .breacrum -->
+        <div class="tips_gh text-center">
+            <ul class="list-inline">
+                <li>
+                    <span>1</span>
+                    <strong>Thông tin giỏ hàng</strong>
+                </li>
+                <li class="active">
+                    <span>2</span>
+                    <strong>Thông tin mua hàng</strong>
+                </li>
+                <li>
+                    <span>3</span>
+                    <strong>Thông tin thanh toán</strong>
+                </li>
+                <li>
+                    <span>4</span>
+                    <strong>Hoàn thành</strong>
+                </li>
+            </ul>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal text-center">
+                <h4>Thông tin giao hàng</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @Value = user != null ? user.LastName + " " + user.FirstName : "Chinh" } })
+                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @Value = user != null ? user.EmailAddress : "chinhhi@gmail.com"} })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @Value = user != null ? user.PhoneNumber : "09873213312" } })
+                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SoNha, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.SoNha, new { htmlAttributes = new { @class = "form-control", @Value = "1234" } })
+                        @Html.ValidationMessageFor(model => model.SoNha, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Duong, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Duong, new { htmlAttributes = new { @class = "form-control", @Value = "1234" } })
+                        @Html.ValidationMessageFor(model => model.Duong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Xa, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Xa, new { htmlAttributes = new { @class = "form-control", @Value = "Bao Loc" } })
+                        @Html.ValidationMessageFor(model => model.Xa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Tinh, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Tinh, new { htmlAttributes = new { @class = "form-control", @Value = "Lam Dong" } })
+                        @Html.ValidationMessageFor(model => model.Tinh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.huyen, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.huyen, new { htmlAttributes = new { @class = "form-control", @Value = "Lam Dong" } })
+                        @Html.ValidationMessageFor(model => model.huyen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row_info_gh" style="clear: both;    text-align: center;    padding-top: 20px;">
+                    <div colspan="6" align="left">
+                        <div class="form-group">
+                            <div class="col-md-offset-6 col-md-6">
+                                <input type="submit" value="Bước tiếp theo" class="next_info_gh" style="float: none" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</section>

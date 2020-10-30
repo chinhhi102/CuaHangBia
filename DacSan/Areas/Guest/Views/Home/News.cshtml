@@ -1,0 +1,51 @@
+﻿
+@using PagedList.Mvc;
+@using PagedList;
+
+@model IPagedList<DataLibrary.Models.NewFolder1.tbl_TinTuc>
+
+@{
+    ViewBag.Title = "Tin tức";
+}
+
+<div class="object-detail">
+    <div class="post">
+        @if (Model.Count == 0)
+        {
+            <div class="alert alert-info">Hiện không có tin nào nào</div>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 img">
+                        <a href="/Guest/Home/NewsDetails/@item.TinTucID"><img src="@item.ImagePath" alt="@item.TieuDe" /></a>
+                        <div class="time">
+                            <span>@item.NgayViet.Value.Day-@item.NgayViet.Value.Month</span>
+                            <span>@item.NgayViet.Value.Year</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8 title">
+                        <h2 class="header"><a href="/Guest/Home/NewsDetails/@item.TinTucID">@item.TieuDe</a></h2>
+                        <div class="description">
+                            @if (item.NoiDung.Length > 100)
+                            {
+                                item.NoiDung = item.NoiDung.Substring(0, 100) + "...";
+                                @item.NoiDung
+                            }
+                            else
+                            {
+                                @item.NoiDung
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <a href="https://muabannongsan.somee.com"><img src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.15752-9/122428706_3496980953683247_8037011583924809734_n.jpg?_nc_cat=106&ccb=2&_nc_sid=ae9488&_nc_ohc=uSH6WIi-8_EAX-Y_Wsa&_nc_ht=scontent.fvca1-1.fna&oh=f9cde712338c54fd9d3059bfe038356c&oe=5FBCDA67" /></a>
+
+            } @Html.PagedListPager(Model, page => Url.Action("", new { page, pageSize = Model.PageSize }))
+        }
+    </div>
+</div>
+

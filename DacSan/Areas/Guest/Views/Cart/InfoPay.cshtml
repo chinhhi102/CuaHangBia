@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Thông tin thanh toán";
+}
+
+<section id="container">
+    <div class="f_quanly">
+        <div class="breacrum">
+            <ul class="ul-breacrum list-inline" style="list-style: none">
+                <li>
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                    </a>
+
+                </li>
+                <li><i class="fa fa-chevron-right"></i></li>
+                <li>
+                    <a href="/Guest/Cart">Thông tin thanh toán</a>
+                </li>
+
+
+            </ul><!-- End .ul-breacrum -->
+        </div><!-- End .breacrum -->
+        <div class="tips_gh text-center">
+            <ul class="list-inline">
+                <li>
+                    <span>1</span>
+                    <strong>Thông tin giỏ hàng</strong>
+                </li>
+                <li>
+                    <span>2</span>
+                    <strong>Thông tin mua hàng</strong>
+                </li>
+                <li class="active">
+                    <span>3</span>
+                    <strong>Thông tin thanh toán</strong>
+                </li>
+                <li>
+                    <span>4</span>
+                    <strong>Hoàn thành</strong>
+                </li>
+            </ul>
+        </div>
+        <div class="form-horizontal text-center">
+            <h4>Chọn phương thức thanh toán</h4>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <nav class="list-topics__container">
+        <ol class="u-list-inline list-topics__list">
+            <br />
+            <li class="list-topics__item"><a href="/Guest/Cart/PayByMoMo"><img style="width:150px" src="https://static.mservice.io/img/logo-momo.png" /></a></li>
+            <br />
+            <br />
+            <li class="list-topics__item"><a href="/Guest/Cart/PayByBaoKim"><img style="width:150px" src="https://img.topbank.vn/2019/12/24/b8awMTJx/bao-kim-la-gi-aac6.jpg" /></a></li>
+            <br />
+            <br />
+            <li class="list-topics__item"><a href="/Guest/Cart/PayByVNPay"><img style="width:150px" src="https://sandbox.vnpayment.vn/apis/assets/images/bank/CTT-VNPAY-QR.png" /></a></li>
+
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="chinhhi102@gmail.com" />
+
+            <input type="hidden" name="Bia" value="My painting" />
+            <input type="hidden" name="amount" value="10" />
+            <div id="smart-button-container">
+                <div style="text-align: center;">
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+            <script>
+                function initPayPalButton() {
+                    paypal.Buttons({
+                        style: {
+                            shape: 'rect',
+                            color: 'gold',
+                            layout: 'vertical',
+                            label: 'paypal',
+
+                        },
+
+                        createOrder: function (data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{ "amount": { "currency_code": "USD", "value": 1 } }]
+                            });
+                        },
+
+                        onApprove: function (data, actions) {
+                            return actions.order.capture().then(function (details) {
+                                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                            });
+                        },
+
+                        onError: function (err) {
+                            console.log(err);
+                        }
+                    }).render('#paypal-button-container');
+                }
+                initPayPalButton();
+            </script>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <li class="list-topics__item"><a id="paypal-button-container" @*href="/Guest/Cart/PayByPayPol"*@><img style="width:150px" src="https://s3.cointelegraph.com/storage/uploads/view/3278bdc14c74dd4e85732b776d0e5b1d.png" /></a></li>
+            <input type="submit" value="Buy!" />
+            @*<li class="list-topics__item"><a href="#">Tertiary Topic</a></li>*@
+        </ol>
+
+    </nav>
+</form>
+        </div>
+            @*<div class="row_info_gh">
+                <div colspan="6" align="right">
+                    <a class="next_info_gh" href="/Guest/Cart/Complete">
+                        Bước tiếp theo
+                    </a>
+                </div>
+            </div>*@
+
+        </div>
+</section>
+<script>
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            return fetch('/my-server/create-order', {
+                method: 'POST'
+            }).then(function (res) {
+                return res.json();
+            }).then(function (data) {
+                return data.id;
+            });
+        },
+        onApprove: function (data, actions) {
+            return fetch('/my-server/capture-order/' + data.orderID, {
+                method: 'POST'
+            }).then(function (res) {
+                if (!res.ok) {
+                    alert('Something went wrong');
+                }
+            });
+        }
+    }).render('#paypal-button-container');
+</script>

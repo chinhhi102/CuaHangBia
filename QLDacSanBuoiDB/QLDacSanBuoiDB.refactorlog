@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="1178f6e3-f34a-4775-8b06-2f12e411189d" ChangeDateTime="12/21/2019 09:44:57">
+    <Property Name="ElementName" Value="[dbo].[tbl_Users].[username]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Username" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1ef19d07-8a21-4284-b376-8b9c914d5dce" ChangeDateTime="12/21/2019 09:45:00">
+    <Property Name="ElementName" Value="[dbo].[tbl_Users].[password]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Password" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="97d7a466-a2b8-4696-b5fe-6e86245d2c27" ChangeDateTime="12/21/2019 09:45:11">
+    <Property Name="ElementName" Value="[dbo].[tbl_Users].[first]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FirstName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c9e3f949-65f3-4daa-a974-3b8461ef6c67" ChangeDateTime="12/22/2019 11:35:43">
+    <Property Name="ElementName" Value="[dbo].[tbl_KhuyenMai].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_KhuyenMai]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="KhuyenMaiID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="680a5c91-10f6-4990-b6cb-9c2f7cf200f2" ChangeDateTime="12/22/2019 11:38:59">
+    <Property Name="ElementName" Value="[dbo].[tbl_SanPham].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_SanPham]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SanPhamId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a873ab79-25c2-488f-b15a-e95ad924793e" ChangeDateTime="12/22/2019 11:39:08">
+    <Property Name="ElementName" Value="[dbo].[tbl_SanPham].[SanPhamId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_SanPham]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SanPhamID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="688838bd-8c4c-44a8-864b-27e2da1f608d" ChangeDateTime="12/22/2019 11:40:21">
+    <Property Name="ElementName" Value="[dbo].[tbl_LoaiSP].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_LoaiSP]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LoaiSPID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="94a39939-f547-4d44-8812-cf7b4e129acc" ChangeDateTime="12/22/2019 11:41:08">
+    <Property Name="ElementName" Value="[dbo].[tbl_DiaChi].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_DiaChi]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DiaChiID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="79cdd51f-bce3-4302-8b82-46250bb743eb" ChangeDateTime="12/22/2019 11:42:05">
+    <Property Name="ElementName" Value="[dbo].[tbl_GiaSP].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_GiaSP]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GiaSPID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8989624f-febf-46f8-b23a-fe9c95b68006" ChangeDateTime="12/22/2019 11:44:37">
+    <Property Name="ElementName" Value="[dbo].[tbl_ChiTietGioHang].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_ChiTietGioHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GioHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="27adc4a4-9088-4dba-8634-07807a169a0d" ChangeDateTime="12/22/2019 11:46:01">
+    <Property Name="ElementName" Value="[dbo].[tbl_GioHang].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_GioHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GioHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d78b6fca-8757-4c01-b181-46bc7171c529" ChangeDateTime="12/22/2019 11:47:43">
+    <Property Name="ElementName" Value="[dbo].[tbl_ChiTietGioHang].[GioHangID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_ChiTietGioHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChiTietGioHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cb5385b2-0245-410f-996f-cd3a812f9080" ChangeDateTime="12/22/2019 11:48:49">
+    <Property Name="ElementName" Value="[dbo].[tbl_DonDatHang].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_DonDatHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChiTietDonDatHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="49ccfef1-8010-4158-9697-0e42419eb97f" ChangeDateTime="12/22/2019 11:49:16">
+    <Property Name="ElementName" Value="[dbo].[tbl_DonDatHang].[ChiTietDonDatHangID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_DonDatHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DonDatHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aff2ce5a-ee18-4340-8184-494175b421fd" ChangeDateTime="12/22/2019 11:49:20">
+    <Property Name="ElementName" Value="[dbo].[tbl_DonDatHang].[SanPhamID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_DonDatHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="KhachHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="871bbd26-b79c-4ba6-b8d2-88d2c97f1b92" ChangeDateTime="12/22/2019 11:50:00">
+    <Property Name="ElementName" Value="[dbo].[tbl_ChiTietDonDatHang].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_ChiTietDonDatHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChiTietDonDatHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="530fdf42-8fb4-4245-a339-99c87bae5816" ChangeDateTime="12/22/2019 11:50:15">
+    <Property Name="ElementName" Value="[dbo].[tbl_ChiTietDonDatHang].[DongGia]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_ChiTietDonDatHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DonGia" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5c8b7af-691c-4016-a9bf-05f1c438b2d0" ChangeDateTime="12/22/2019 11:50:25">
+    <Property Name="ElementName" Value="[dbo].[tbl_ChiTietDonDatHang].[DonDatHang]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_ChiTietDonDatHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DonDatHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="16b049fa-c7d5-413f-aaf4-3aaf363ac964" ChangeDateTime="12/22/2019 11:52:44">
+    <Property Name="ElementName" Value="[dbo].[tbl_KhachHang].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_KhachHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="KhachHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="87f4bd86-b252-40f2-80e5-b40486b9ec31" ChangeDateTime="12/23/2019 11:33:29">
+    <Property Name="ElementName" Value="[dbo].[DiaChiNhanHang].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DiaChiNhanHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DiaChiNhanHangID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5db471a9-cdd4-4781-854b-a2409712aaf0" ChangeDateTime="12/27/2019 08:45:28">
+    <Property Name="ElementName" Value="[dbo].[tbl_LienHe].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_LienHe]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LienHeID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f5f0c509-999d-4358-9a25-80eeaa414e74" ChangeDateTime="12/30/2019 12:24:55">
+    <Property Name="ElementName" Value="[dbo].[tbl_Images].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Images]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImageID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ab15fa7f-3c2b-4351-9c6a-e0b562d52012" ChangeDateTime="12/30/2019 12:30:08">
+    <Property Name="ElementName" Value="[dbo].[tbl_TinTuc].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_TinTuc]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TinTucID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1ccb52ab-f0d8-4388-89de-14a39aa100e6" ChangeDateTime="12/30/2019 18:11:26">
+    <Property Name="ElementName" Value="[dbo].[tbl_SanPham].[ImageID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_SanPham]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImagePath" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="24db234d-2396-4dda-a1df-4ef85a72fae0" ChangeDateTime="12/31/2019 10:50:17">
+    <Property Name="ElementName" Value="[dbo].[tbl_KhachHang].[Ten]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_KhachHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="HoTen" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6f99d187-2100-44b2-afb6-945f222e9f51" ChangeDateTime="12/31/2019 10:50:31">
+    <Property Name="ElementName" Value="[dbo].[tbl_KhachHang].[DiaChi]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_KhachHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Email" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c1c0056d-7b31-4c39-9c26-4a6e3d6bf45e" ChangeDateTime="12/31/2019 11:25:18">
+    <Property Name="ElementName" Value="[dbo].[tbl_Users].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7c9cda1b-4548-4299-b8f9-ebf6e495a74f" ChangeDateTime="12/31/2019 12:18:45">
+    <Property Name="ElementName" Value="[dbo].[tbl_ChiTietGioHang].[NgayDat]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_ChiTietGioHang]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NgayThem" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6564e645-04aa-4ae0-a9e3-778f9ef044c8" ChangeDateTime="01/05/2020 04:35:19">
+    <Property Name="ElementName" Value="[dbo].[tbl_TinTuc].[ImageID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_TinTuc]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImagePath" />
+  </Operation>
+</Operations>

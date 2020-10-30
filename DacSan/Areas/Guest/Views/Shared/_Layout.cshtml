@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Bia Việt Nam</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="~/Content/Guest/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/Guest.js"></script>
+    <link rel="stylesheet" href="~/Content/Guest/assets/css/reset.css">
+    <link rel="stylesheet" href="~/Content/Guest/fonts.googleapis.com/css-family=Muli-Roboto+Condensed-Roboto+Slab-Lobster.htm">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/css/style.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/animate/animate.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/bootstrap-dropdownhover/bootstrap-dropdownhover.min.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/owlcarousel2-2.2.1/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/owlcarousel2-2.2.1/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/ihover/ihover.min.css">
+    <link rel="stylesheet" href="~/Content/Guest/assets/add-on/fancybox-3/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="~/Content/Guest/plugins/woocommerce/assets/css/wcmc-style.css">
+    <link rel="stylesheet" href="~/Content/Guest/plugins/woocommerce-cart/assets/css/wcmc-cart-style.css">
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+@* *************** BODY ************** *@
+<body>
+    <header class="hidden-xs">
+        @Html.Partial("~/Areas/Guest/Views/Shared/_Header.cshtml")
+    </header>
+    <div class="container body-content">
+        <div class="container headerNav">
+
+            <div class="navigation hidden-xs">
+                @Html.Partial("~/Areas/Guest/Views/Shared/_Navbar.cshtml")
+            </div>
+        </div>
+        @RenderBody()
+
+    </div>
+
+    <footer class="footer">
+        @Html.Partial("~/Areas/Guest/Views/Shared/_Footer.cshtml")
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript" src="~/Content/Guest/assets/add-on/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/js/script.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/assets/add-on/wow/wow.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/assets/add-on/bootstrap-dropdownhover/bootstrap-dropdownhover.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/assets/add-on/owlcarousel2-2.2.1/owl.carousel.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/assets/add-on/fancybox-3/jquery.fancybox.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/assets/add-on/flexible/jquery.easing.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/assets/add-on/flexible/jquery.easy-ticker.min.js" charset="utf-8"></script>
+
+    </body>
+</html>
+

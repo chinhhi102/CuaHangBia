@@ -1,0 +1,21 @@
+﻿@using DataLibrary.Models
+@model DataLibrary.Models.ProductModel
+
+<h5 class="nav_header">Danh mục sản phẩm</h5>
+<ul class="list-group">
+    @if (ViewData["loaisp"] == null)
+    {
+        <li class="list-group-item-danger">Không có loại sản phẩm nào cả</li>
+    }
+    else
+    {
+        foreach (LoaiSPModel loai in (IEnumerable<LoaiSPModel>)ViewData["loaisp"])
+        {
+            <li class="list-group-item"><a href="/Guest/Product/Categories/@loai.LoaiSPID">@loai.TenLoaiSP</a></li>
+        }
+    }
+    <br />
+    <br />
+    <a href="http://loachotot.somee.com"><img src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.15752-9/122791569_676652432985095_4502607306963454670_n.jpg?_nc_cat=111&ccb=2&_nc_sid=ae9488&_nc_ohc=wcft0vQHz_sAX9R9rz0&_nc_ht=scontent.fvca1-1.fna&oh=67e0b1d1c81ee7c264f4101575928f95&oe=5FBE49BE" /></a>
+</ul>
+

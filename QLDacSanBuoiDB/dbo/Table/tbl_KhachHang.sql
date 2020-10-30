@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[tbl_KhachHang]
+(
+	[KhachHangID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [HoTen] NVARCHAR(50) NULL, 
+    [Email] NVARCHAR(50) NULL, 
+    [SDT] NVARCHAR(50) NULL, 
+    [SoNha] NVARCHAR(250) NULL, 
+    [Duong] NVARCHAR(250) NULL, 
+    [Xa] NVARCHAR(250) NULL, 
+    [Tinh] NVARCHAR(250) NULL, 
+    [Huyen] NVARCHAR(250) NULL
+)

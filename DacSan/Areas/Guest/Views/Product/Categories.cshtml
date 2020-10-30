@@ -1,0 +1,80 @@
+﻿@using DataLibrary.Models;
+@{
+    ViewBag.Title = ((LoaiSPModel)ViewData["loaispds"]).TenLoaiSP;
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
+}
+
+<section id="layout_body">
+    <div style="padding: 10px">
+        <nav>
+            <div id="mySidenav" class="sidenav">
+                @Html.Partial("~/Areas/Guest/Views/Product/_ProductLayout.cshtml")
+            </div>
+        </nav>
+        <article>
+            @if (ViewData["loaispds"] == null)
+            {
+                <h3 class="header">Chưa có sản phẩm nào</h3>
+            }
+            else
+            {
+                LoaiSPModel loai = (LoaiSPModel)ViewData["loaispds"];
+
+
+                <div class="widget_product product-slider-horizontal" style="">
+                    <div class="text-center title-header">
+                        <h3 class="header">@loai.TenLoaiSP</h3>
+                    </div>
+                    <div class="title-header">
+                        <div class="row">
+                            <div class="text-left col-md-6">
+                                <a href="#" class="btn btn-warning" style="display:inline-block">Mới</a>
+                                <a href="#" class="btn btn-warning" style="display:inline-block">Bán chạy</a>
+                            </div>
+                            <div class="text-right col-md-6">
+                                <a href="#" class="btn btn-warning" style="display:inline-block">Xem tất cả</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <div id="widget_product_37" class="list-item-product row">
+                            @if (!((IEnumerable<ProductModel>)ViewData[loai.LoaiSPID.ToString()]).Any())
+                            {
+                                <h3>Không có sản phẩm nào</h3>
+                            }
+                            @foreach (ProductModel sp in (IEnumerable<ProductModel>)ViewData[loai.LoaiSPID.ToString()])
+                            {
+                                <div class="card-item col-xs-4 col-sm-3 col-md-4 col-lg-4">
+                                    <div class="item item-sp woocommerce-pr-object box-shadow-0 box-shadow-0-hover">
+                                        <div class="product ih-item square effect6 bottom_to_top">
+                                            <a href="/Guest/Product/Details/@loai.LoaiSPID/@sp.SanPhamID">
+                                                <div class="img">
+                                                    <picture>
+                                                        <img src="@sp.ImagePath" alt="@sp.TenSP" />
+                                                    </picture>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="title">
+                                            <h3 style="color:#00cc33"><a href="#" title="Bia" style="color:#00cc33">@sp.TenSP</a></h3>
+                                            <div class="item-pr-price">
+                                                <span class="product-item-price">@string.Format(info, "{0:C}", sp.DonGia) </span>
+                                                <a href="@Url.Action("Details", "Product", new { categoriesID = loai.LoaiSPID, ProductID = @sp.SanPhamID })" class="btn btn-cart-top btn-success">Đặt mua</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+
+        </article>
+    </div>
+</section>

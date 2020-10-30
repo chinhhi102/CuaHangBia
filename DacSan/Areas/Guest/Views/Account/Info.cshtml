@@ -1,0 +1,62 @@
+﻿@model DacSan.Models.UsersModel
+
+@{
+    ViewBag.Title = "Thông tin người dùng";
+}
+
+<section id="layout_body">
+    <div style="padding: 10px">
+        <nav>
+            <div id="mySidenav" class="sidenav">
+                @Html.Partial("~/Areas/Guest/Views/Account/_AccountLayout.cshtml")
+            </div>
+        </nav>
+        <article>
+            <h3>Thông tin</h3>
+            <div>
+                <dl class="dl-horizontal ">
+                    <dt class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayNameFor(model => model.Username)
+                    </dt>
+
+                    <dd class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayFor(model => model.Username)
+                    </dd>
+
+                    <dt class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+
+                    <dd class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+
+                    <dt class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayNameFor(model => model.EmailAddress)
+                    </dt>
+
+                    <dd class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayFor(model => model.EmailAddress)
+                    </dd>
+
+                    <dt class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </dt>
+
+                    <dd class="control-label col-md-2" style="margin:5px">
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+
+                </dl>
+            </div>
+        </article>
+    </div>
+</section>

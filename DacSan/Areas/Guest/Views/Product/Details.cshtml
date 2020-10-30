@@ -1,0 +1,221 @@
+﻿@using DataLibrary.Models;
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    var sp = (ProductModel)ViewData["spds"];
+}
+
+<section id="layout_body">
+    <div style="padding: 10px">
+        <nav>
+            <div id="mySidenav" class="sidenav">
+                @Html.Partial("~/Areas/Guest/Views/Product/_ProductLayout.cshtml")
+            </div>
+        </nav>
+        <article style="background: white">
+
+            <div class="products-detail">
+                <div class="breadcrumb">
+                    <div class="btn-group btn-breadcrumb">
+                        <a href="/" class="btn btn-default">Trang Chủ</a>
+                        <a class="btn btn-default btn-next"><i class="fa fa-caret-right"></i></a>
+                        <a href="/Guest/Product/Categories/@sp.LoaiSPID" class="btn btn-default">@ViewData["loaispds"]</a>
+                        <a class="btn btn-default btn-next"><i class="fa fa-caret-right"></i></a>
+                        <a href="/Guest/Product/@sp.LoaiSPID/@sp.SanPhamID" class="btn btn-default">@sp.TenSP</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-md-4" id="surround">
+
+                        <div class="row">
+                            <div class="col-md-push-2 col-lg-10 col-md-10 col-sm-10 col-xs-10 box-image-featured">
+                                <a href="@sp.ImagePath" data-fancybox="product-thumb">
+                                    <img class="zoom-img" id="zoom"
+                                         src="@sp.ImagePath"
+                                         data-zoom-image="@sp.ImagePath" />
+                                </a>
+                            </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    $("#zoom").ezPlus();
+                                });
+                            </script>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="title-head">@sp.TenSP</h1>
+                        <div>
+                            <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                            <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                            <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                            <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                            <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                        </div>
+                        <div>
+                            <p>Nhà phân phối: <strong>Hàn Quốc</strong></p>
+                            <p>Số lượng: <strong>0</strong></p>
+                            <p>Mã sản phẩm: <strong>@sp.SanPhamID</strong></p>
+                        </div>
+                        <div class="wcmc-alert-product"></div>
+
+                        <div class="wcmc-product-cart">
+                            <div class="quantity-title" style="overflow: hidden;height: auto;">
+                                <div class="pull-left">Số lượng :</div>
+                            </div>
+                            @using (Html.BeginForm("Add", "Product", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div style="overflow: hidden;">
+                                    <div class="addtocart_quantity">
+                                        <input id="quantity" type="number" name="SL" value="1" min="1" class="form-control quantity-selector">
+                                    </div>
+                                    <div class="addtocart_button">
+                                        <input value="Thêm vào giỏ hàng" type="submit" class="btn btn-lg button_cart wcmc_add_to_cart" data-id="900">
+                                        <form id="myform" method="post" action="target.html">
+                                            <a href="/Guest/Cart?id=@sp.SanPhamID" class="btn btn-lg button_cart button_cart_green wcmc_add_to_cart_now" data-id="900">
+                                                <span>Mua ngay</span>
+                                            </a>
+                                            </form>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+
+                            <div role="tabpanel">
+                                <!-- Nav tabs -->
+                                <div class="tab">
+                                    <button class="tablinks" onclick="openTab(event, 'Mota')">Mô tả</button>
+                                    <button class="tablinks" onclick="openTab(event, 'ThanhPhan')">Thành phần cấu tạo</button>
+                                    <button class="tablinks" onclick="openTab(event, 'XepHang')">Xếp hạng sản phẩm</button>
+                                </div>
+                                <div id="Mota" class="tabcontent">
+                                    <p>@sp.MoTa</p>
+                                </div>
+
+                                <div id="ThanhPhan" class="tabcontent">
+                                    <table align="center" border="1" cellpadding="1" cellspacing="1" style="border-collapse: collapse; border-spacing: 0px; border: 0px; color: #191a19; empty-cells: show; font-family: open sans; font-size: 16px; max-width: 100%; outline-style: none !important; width: 700px;" data-mce-style="border-collapse: collapse; border-spacing: 0px; border: 0px; color: #191a19; empty-cells: show; font-family: open sans; font-size: 16px; max-width: 100%; outline-style: none !important; width: 700px;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Năng lượng</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>127 kJ (30 kcal) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Carbohydrat</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>7.55 g</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Đường</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>6.2 g</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Chất xơ thực phẩm</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.4 g</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Chất béo</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.15 g</strong></span></td>
+                                                <td style="border-color: #006600; text-align: justify; vertical-align: top;" data-mce-style="border-color: #006600; text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Protein</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.61 g</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Nước</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>91.45 g</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Vitamin A equiv.</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>28 μg (3%)</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Thiamin (Vit. B1)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.033 mg (3%)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Riboflavin (Vit. B2)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.021 mg (1%)</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Niacin (Vit. B3)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.178 mg (1%)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Axit pantothenic (Vit. B5)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.221 mg (4%)</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Vitamin B6</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.045 mg (3%)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Axit folic (Vit. B9)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>3 μg (1%)</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Vitamin C</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>8.1 mg (14%)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Canxi</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>7 mg (1%)</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Sắt</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>0.24 mg (2%)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Magie</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>10 mg (3%)</strong></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Phospho</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>11 mg (2%)</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;"><span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>Kali</strong></span></td>
+                                                <td style="text-align: justify; vertical-align: top;" data-mce-style="text-align: justify; vertical-align: top;">
+                                                    <span style="font-size: 16px;" data-mce-style="font-size: 16px;"><strong>112 mg (2%)</strong></span>
+                                                    <br> &nbsp;
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="XepHang" class="tabcontent">
+                                    <p>Xếp hạng sản phẩm này của chúng tôi:</p>
+                                    <span>
+                                        <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                                        <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                                        <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                                        <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                                        <i class="material-icons" style="font-size:16px;color:#ffd800;">star</i>
+                                    </span>
+                                </div>
+
+                                <div class="box product-slider-horizontal">
+                                    <div class="title-header">
+                                        <h3 class="header">Sản Phẩm Liên Quan</h3>
+                                    </div>
+                                    <div class="box-content">
+                                        <div id="widget_related_products" class="owl-carousel">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function openTab(evt, tabName) {
+                                    var i, tabcontent, tablinks;
+                                    tabcontent = document.getElementsByClassName("tabcontent");
+                                    for (i = 0; i < tabcontent.length; i++) {
+                                        tabcontent[i].style.display = "none";
+                                    }
+                                    tablinks = document.getElementsByClassName("tablinks");
+                                    for (i = 0; i < tablinks.length; i++) {
+                                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                                    }
+                                    document.getElementById(tabName).style.display = "block";
+                                    evt.currentTarget.className += " active";
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </section>
+    <script type="text/javascript" src="~/Content/Guest/plugins/woocommerce/assets/js/wcmc-script.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/plugins/woocommerce-cart/assets/js/SerializeJSON/SerializeJSON.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Content/Guest/plugins/woocommerce-cart/assets/js/wcmc-add-to-cart.js-v=2.2.7.htm" charset="utf-8"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>

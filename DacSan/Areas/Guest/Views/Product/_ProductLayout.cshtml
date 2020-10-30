@@ -1,0 +1,91 @@
+﻿@using DataLibrary.Models
+@using DataLibrary.Models.NewFolder1
+@model DataLibrary.Models.ProductModel
+@{
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+<div>
+    <h5 class="nav_header">Danh mục sản phẩm</h5>
+    <ul class="list-group">
+        @if (ViewData["loaisp"] == null)
+        {
+            <li class="list-group-item-danger">Không có loại sản phẩm nào cả</li>
+        }
+        else
+        {
+            foreach (LoaiSPModel loai in (IEnumerable<LoaiSPModel>)ViewData["loaisp"])
+            {
+                <li class="list-group-item"><a href="/Product/Categories/@loai.LoaiSPID">@loai.TenLoaiSP</a></li>
+            }
+        }
+    </ul>
+</div>
+<div>
+    <h5 class="nav_header">Sản phẩm nổi bật</h5>
+    <div class="widget_product product-slider-horizontal" style="">
+        <div class="box-content">
+            <div id="widget_product_37" class="list-item-product row text-center">
+                @if (ViewData["spnb"] == null)
+                {
+                    <div class="alert-danger">Không có sản phẩm nào cả</div>
+                }
+                else
+                {
+                    foreach (ProductModel sp in (IEnumerable<ProductModel>)ViewData["spnb"])
+                    {
+                        <div class="card-item col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                            <div class="item item-sp woocommerce-pr-object box-shadow-0 box-shadow-0-hover">
+                                <div class="product ih-item square effect6 bottom_to_top">
+                                    <a href="@Url.Action("Details", "Product", new { categoriesID = sp.LoaiSPID, ProductID = @sp.SanPhamID })">
+                                        <div class="img">
+                                            <picture>
+                                                <img src="@sp.ImagePath" alt="@sp.TenSP " />
+                                            </picture>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <h3 style="color:#00cc33"><a href="@Url.Action("Details", "Product", new { categoriesID = sp.LoaiSPID, ProductID = @sp.SanPhamID })" title="Bia" style="color:#00cc33">@sp.TenSP</a></h3>
+                                    <div class="item-pr-price">
+                                        <span class="product-item-price">@string.Format(info, "{0:C}", sp.DonGia) </span>
+                                        <a href="@Url.Action("Index", "Cart", new { id = @sp.SanPhamID })" class="btn btn-cart-top btn-warning">Mua ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h5 class="nav_header">Tin tức</h5>
+    <div class="widget_box_post" style="">
+        <div class="row">
+            <div id="widget_post_39" class="col-md-12">
+                @if (ViewData["listtintuc"] != null)
+                {
+                    foreach (var item in (IEnumerable<tbl_TinTuc>)ViewData["listtintuc"])
+                    {
+                        <div class="item col-xs-12">
+                            <div class="img">
+                                <a href="/Guest/Home/NewsDetails/@item.TinTucID" title="@item.TieuDe">
+                                    <img src="@item.ImagePath" alt="@item.TieuDe" />
+                                </a>
+                                <div class="time">
+                                    <span>@item.NgayViet.Value.Day - @item.NgayViet.Value.Month</span>
+                                    <span>@item.NgayViet.Value.Year</span>
+                                </div>
+                            </div>
+                            <div class="title">
+                                <h3><a href="/Guest/Home/NewsDetails/@item.TinTucID" title="@item.TieuDe">@item.TieuDe</a></h3>
+                                <div class="excerpt">@item.NoiDung.Substring(0, 50)</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

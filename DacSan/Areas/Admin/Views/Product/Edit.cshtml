@@ -1,0 +1,120 @@
+﻿@using DacSan.Models
+@using DataLibrary.Models
+@model DacSan.Models.ProductModel
+
+@{
+    ViewBag.Title = "Sửa sản phẩm";
+    var sp = (DacSan.Models.ProductModel)ViewData["sp"];
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<div class="row">
+    <div class="col-md-8">
+
+        @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h1 class="header">Thêm sản phẩm</h1>
+                <hr />
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Error"]</div>
+                }
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <input type="hidden" name="ProductID" value="@sp.ProductID" />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TenSP, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input class="form-control" name="TenSP" value="@sp.TenSP" />
+                        @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <textarea class="form-control" name="MoTa" rows="5">@sp.MoTa</textarea>
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Loại sản phẩm">Loại sản phẩm</label>
+                    <div class="col-md-10">
+                        <select name="LoaiSPID" class="form-control">
+                            @foreach (LoaiSPModel loai in (IEnumerable<LoaiSPModel>)ViewData["loaisp"])
+                            {
+                                <option value="@loai.LoaiSPID" @((loai.LoaiSPID == sp.LoaiSPID) ? "selected" : "") >@loai.TenLoaiSP</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.LoaiSPID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Xuất sứ">Xuất xứ</label>
+                    <div class="col-md-10">
+                        <select name="DiaChiID" class="form-control">
+                            @foreach (DiaChiModel loai in (IEnumerable<DiaChiModel>)ViewData["diachi"])
+                            {
+                                <option value="@loai.DiaChiID" @((loai.DiaChiID == sp.DiaChiID) ? "selected" : "")>@loai.TenTinh</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.DiaChiID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DonGia, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input class="form-control" name="DonGia" value="@string.Format(info, "{0:C}", sp.DonGia)" />
+                        @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Ảnh sản phẩm:</label>
+                    <div class="col-md-10">
+                        <img src="@sp.ImagePath" width="200px" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="ImageFile" enctype="mutipart/form-data" value="@sp.ImagePath" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Sửa" class="btn btn-success" />
+                        <form id="myform" method="post" action="/Admin/Product/Delete?id=@ViewData["EditID"]" style="float:left; margin-left: 10px;">
+                            <a class="btn btn-danger" onclick="confirm('Bạn có muốn xoá sản phẩm này ?') ? document.getElementById('myform').submit() : false;">Xoá</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div id="RightNav">
+        @Html.Partial("~/Areas/Admin/Views/Shared/_RightNav.cshtml")
+    </div>
+</div>
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

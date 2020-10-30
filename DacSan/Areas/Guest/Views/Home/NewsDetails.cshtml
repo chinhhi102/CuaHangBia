@@ -1,0 +1,51 @@
+﻿@using DataLibrary.Models.NewFolder1
+@model DataLibrary.Models.NewFolder1.tbl_TinTuc
+
+@{
+    ViewBag.Title = "Đảo hạt quốc";
+}
+
+<div class="warper">
+
+    <div class="container">
+
+
+        <div class="object-detail">
+            <h1 class="header">@Model.TieuDe</h1>
+
+            <div class="time">
+                <div class="block"> <span>@Model.NgayViet.Value.ToString("dd-MM-yyyy")</span> </div>
+            </div>
+
+            <div class="excerpt"><h4>@Model.NoiDung</h4></div>
+            <!-- content -->
+            <div class="text-center">
+                <img src="@Model.ImagePath" title="@Model.TieuDe" />
+            </div>
+            <div class="object-detail-content">
+                @Model.NoiDung
+            </div>
+            <div class="related_post">
+                <h3 class="header text-left" style="text-align: left;">Bài viết liên quan</h3>
+                @if (ViewData["listtintuc"] != null)
+                {
+                    foreach (var item in (IEnumerable<tbl_TinTuc>)ViewData["listtintuc"])
+                    {
+                    <div class="item">
+                        <div class="img">
+                            <a href="/Guest/Home/NewsDetails/@item.TinTucID"><img src="@item.ImagePath" alt="@item.TieuDe" /></a>
+                        </div>
+                        <div class="title">
+                            <h3><a href="/Guest/Home/NewsDetails/@item.TinTucID">@item.TieuDe</a></h3>
+                            <div class="description">
+                                @item.NoiDung.Substring(0, 50) ...
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

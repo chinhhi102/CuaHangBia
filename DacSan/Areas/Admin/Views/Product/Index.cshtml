@@ -1,0 +1,78 @@
+﻿@using DataLibrary.Models
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+}
+<div class="row">
+    <div class="col-md-8">
+
+
+        <h1>Quản Lý Sản Phẩm</h1>
+        <a href="/Admin/Product/Create">
+            <input class="btn btn-info" type="button" value="Thêm Sản Phẩm">
+        </a>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Mã SP</th>
+                    <th>Tên SP</th>
+                    <th>Giá bán</th>
+                    <th>Tình trạng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewData["products"] == null || ((IEnumerable<ProductModel>)ViewData["products"]).Count() == 0)
+                {
+                    <div class="alert alert-info">Hiện không có sản phẩm nào</div>
+                }
+                else
+                {
+                    foreach (ProductModel product in (IEnumerable<ProductModel>)ViewData["products"])
+                    {
+                        <tr>
+                            <td>@product.SanPhamID</td>
+                            <td>@product.TenSP</td>
+                            <td>@product.DonGia đ</td>
+                            <td>Đã bán <span class="label label-success">5 / 10</span></td>
+                            <td>
+                                <a href="/Admin/Product/Edit?id=@product.SanPhamID" style="float:left;"><span class="label label-warning">Sửa</span></a>
+                                <form id="myform" method="post" action="/Admin/Product/Delete?id=@product.SanPhamID" style="float:left; margin-left: 10px;">
+                                    <a class="label label-danger" onclick="confirm('Bạn có muốn xoá sản phẩm này ?') ? document.getElementById('myform').submit() : false;">Xoá</a>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">1</a></li>
+                <li class="disabled"><a href="#">2</a></li>
+                <li class="disabled"><a href="#">3</a></li>
+                <li class="disabled"><a href="#">4</a></li>
+                <li class="disabled"><a href="#">5</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="RightNav">
+        @Html.Partial("~/Areas/Admin/Views/Shared/_RightNav.cshtml")
+    </div>
+</div>
+
+
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>
+
+
+
+
+

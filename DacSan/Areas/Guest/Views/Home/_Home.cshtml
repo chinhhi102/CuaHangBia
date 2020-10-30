@@ -1,0 +1,118 @@
+﻿@using DataLibrary.Models
+@using DataLibrary.Models.NewFolder1
+@{
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+@if (ViewData["loaisp"] == null)
+{
+    <h3 class="header">Chưa có sản phẩm nào</h3>
+}
+else
+{
+    foreach (LoaiSPModel loai in (IEnumerable<LoaiSPModel>)ViewData["loaisp"])
+    {
+        if (!((IEnumerable<ProductModel>)ViewData[loai.LoaiSPID.ToString()]).Any())
+        {
+            continue;
+        }
+        else
+        {
+            <div class="widget_product product-slider-horizontal" style="">
+                <div class="text-center title-header">
+                    <h3 class="header">@loai.TenLoaiSP</h3>
+                </div>
+                <div class="title-header">
+                    <div class="row">
+                        <div class="text-left col-md-6">
+                            <a href="#" class="btn btn-warning" style="display:inline-block">Mới</a>
+                            <a href="#" class="btn btn-warning" style="display:inline-block">Bán chạy</a>
+                        </div>
+                        <div class="text-right col-md-6">
+                            <a href="/Guest/Product/Categories/@loai.LoaiSPID" class="btn btn-warning" style="display:inline-block">Xem tất cả</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <div id="widget_product_37" class="list-item-product row">
+                        @if (!((IEnumerable<ProductModel>)ViewData[loai.LoaiSPID.ToString()]).Any())
+                        {
+                            <h3>Không có sản phẩm nào</h3>
+                        }
+                        @foreach (ProductModel sp in (IEnumerable<ProductModel>)ViewData[loai.LoaiSPID.ToString()])
+                        {
+                            <div class="card-item col-xs-12 col-sm-6 col-md-4 col-lg-15">
+                                <div class="item item-sp woocommerce-pr-object box-shadow-0 box-shadow-0-hover">
+                                    <div class="product ih-item square effect6 bottom_to_top">
+                                        <a href="/Guest/Product/Details/@loai.LoaiSPID/@sp.SanPhamID">
+                                            @if (sp.ImagePath != null)
+                                            {
+                                                <div class="img">
+                                                    <picture>
+                                                        <img src="@sp.ImagePath" alt="@sp.TenSP" />
+                                                    </picture>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="img">
+                                                    <picture>
+                                                        <img src="/Content/Guest/uploads/source/san-pham/buoi1.jpg" alt="@sp.TenSP" />
+                                                    </picture>
+                                                </div>
+                                            }
+                                        </a>
+                                    </div>
+                                    <div class="title">
+                                        <h3 style="color:#00cc33"><a href="#" title="@sp.TenSP" style="color:#00cc33">@sp.TenSP @ViewData[loai.LoaiSPID.ToString() + "-" + sp.SanPhamID.ToString()]</a></h3>
+                                        <div class="item-pr-price">
+                                            <span class="product-item-price">@string.Format(info, "{0:C}", sp.DonGia)</span>
+                                            <a href="@Url.Action("Details", "Product", new { categoriesID = loai.LoaiSPID, ProductID = @sp.SanPhamID })" class="btn btn-cart-top btn-success">Đặt mua</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+
+<div class="widget_box_post" style="">
+    <div class="header-title text-center">
+        <h2 class="header">Tin Tức</h2>
+    </div>
+
+    <div class="row">
+        <div id="widget_post_39" class="col-md-12">
+            @if (ViewData["listtintuc"] != null)
+            {
+                foreach (var item in (IEnumerable<tbl_TinTuc>)ViewData["listtintuc"])
+                {
+                    <div class="item col-md-4">
+                        <div class="img">
+                            <a href="/Guest/Home/NewsDetails/@item.TinTucID" title="@item.TieuDe">
+                                <img src="@item.ImagePath" alt="@item.TieuDe" />
+                            </a>
+                            <div class="time">
+                                <span>@item.NgayViet.Value.Day - @item.NgayViet.Value.Month</span>
+                                <span>@item.NgayViet.Value.Year</span>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h3><a href="/Guest/Home/NewsDetails/@item.TinTucID" title="@item.TieuDe">@item.TieuDe</a></h3>
+                            <div class="excerpt">@item.NoiDung.Substring(0, 50)</div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+        </div>
+    </div>
+</div>
+
+
+

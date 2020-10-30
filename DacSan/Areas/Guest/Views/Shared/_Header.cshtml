@@ -1,0 +1,118 @@
+﻿<!-- top bar -->
+<div class="top-bar" id="top-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="color:#006633;font-weight:bold;">
+                <i class="fa fa-map-marker" aria-hidden="true"></i> (+84) 969 969 969
+            </div>
+            <div class="col-md-6 text-right">
+                @if (ViewBag.UserName != null)
+                {
+                    <p style="display:inline-block; margin:0;">
+                        <a href="/Guest/Account/Info"> <i class="fa fa-user" aria-hidden="true"></i> Xin chào, @ViewBag.UserName</a>
+                    </p>
+                    <p style="display:inline-block; margin:0px 0px 0px 14px;">
+                        <a href="/Guest/Account/Logout"> <i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
+                    </p>
+                }
+                else
+                {
+
+                    <p style="display:inline-block; margin:0;">
+                        <a href="/Guest/Account/Register"> <i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký</a>
+                    </p>
+                    <p style="display:inline-block; margin:0px 0px 0px 14px;">
+                        <a href="/Guest/Account/Login"> <i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</a>
+                    </p>
+                }
+                &nbsp;&nbsp;
+                <p style="display:inline-block;margin:0;"><a href="/Guest/Home/Tutorial">Hướng dẫn mua hàng</a></p>
+                <div class="social-icon" style="display:inline-block;">
+
+                    <a href="javascript:if(confirm('https://www.facebook.com/myhorizon.birth.m12\n\nThis file was not retrieved because it was filtered out by your project settings.\n\nWould you like to open it from the server?'))window.location='https://www.facebook.com/myhorizon.birth.m12'">
+                        <img src="~/Content/Guest/uploads/source/icon/iconfb.png" alt="" />
+                    </a>
+
+                    <a href="/">
+                        <img src="~/Content/Guest/uploads/source/icon/googlepluslogos02.png" alt="" />
+                    </a>
+
+                    <a href="/">
+                        <img src="~/Content/Guest/uploads/source/icon/icontt.png" alt="" />
+                    </a>
+
+                    <a href="/">
+                        <img src="~/Content/Guest/uploads/source/icon/iconyb.png" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header content -->
+<div class="header-content">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-2 text-left">
+                <h1 style="display: none">Bia Việt Nam</h1>
+                <a href="/" title="Bia Việt Nam">
+                    <img src="~/Content/Guest/uploads/source/header/logo_1.png" alt="Bia Việt Nam" />
+                </a>
+            </div>
+
+            <div class="col-md-8 list-icon">
+                <div class="item item1 wow" data-wow-duration="1s" data-wow-delay="0s">
+                    <div class="img"><img src="~/Content/Guest/uploads/source/icon/at.png" alt="Xuất xứ rõ ràng" /></div>
+                    <div class="title">
+                        <h3>Xuất xứ rõ ràng</h3>
+                        <p>An toàn chất lượng</p>
+                    </div>
+                </div>
+                <div class="item item2 wow" data-wow-duration="1s" data-wow-delay="0s">
+                    <div class="img"><img src="~/Content/Guest/uploads/source/icon/icon3_1.png" alt="Giao hàng tận nơi" /></div>
+                    <div class="title">
+                        <h3>Giao hàng tận nơi</h3>
+                        <p>Nhanh chóng chuyên nghiệp</p>
+                    </div>
+                </div>
+                <div class="item item3 wow" data-wow-duration="1s" data-wow-delay="0s">
+                    <div class="img"><img src="~/Content/Guest/uploads/source/icon/icon1_1.png" alt="Dịch vụ chuyên nghiệp" /></div>
+                    <div class="title">
+                        <h3>Dịch vụ chuyên nghiệp</h3>
+                        <p>Thanh toán, đổi trả dễ dàng</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 text-right">
+                <a href="#" class="btn-search" id="btn-search-modal"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a href="/Guest/Cart" class="btn-cart-top">
+                    <img src="~/Content/Guest/uploads/source/icon/iconcart.png" alt="" /> <span class="wcmc-total-items" style="top: 0px">@ViewData["NumCart"]</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="searchmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body search" style="height: 100px">
+                <form id="search-product" class="navbar-form form-search" action="san-pham/search/index.htm" data-url="" method="get" role="search">
+                    <div class="form-group">
+                        <input class="form-control search-field" type="text" value="" name="key" placeholder="Tìm kiếm">
+                    </div>
+                    <button type="submit" class="btn btn-search btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+
+                <div class="result-search" style="overflow: hidden;">
+
+                </div>
+            </div>
+
+            <button type="button" class="btn-close-modal" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+    </div>
+</div>

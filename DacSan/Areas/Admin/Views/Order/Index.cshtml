@@ -1,0 +1,68 @@
+﻿@using DataLibrary.Models
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+}
+
+<div class="row">
+    <div class="col-md-8">
+
+
+        <h1>Quản Lý Đơn Hàng</h1>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Mã Đơn Hàng</th>
+                    <th>Mã Khách Hàng</th>
+                    <th>Tình trạng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewData["orders"] == null || ((IEnumerable<OrderModel>)ViewData["orders"]).Count() == 0)
+                {
+                    <div class="alert alert-info">Hiện không có đơn hàng nào</div>
+                }
+                else
+                {
+                    foreach (OrderModel order in (IEnumerable<OrderModel>)ViewData["orders"])
+                    {
+                        <tr>
+                            <td>@order.DonDatHangID</td>
+                            <td>@order.KhachHangID</td>
+                            <td>@((order.TrangThai == 1) ? "Chưa giao" : "Đã giao")</td>
+                            <td>
+                                <a href="/Admin/Order/Details?id=@order.DonDatHangID" style="float:left;"><span class="label label-warning">Chi tiết</span></a>
+                                <form id="myform" method="post" action="/Admin/Order/Delete?id=@order.DonDatHangID" style="float:left; margin-left: 10px;">
+                                    <a class="label label-danger" onclick="confirm('Bạn có muốn xoá sản phẩm này ?') ? document.getElementById('myform').submit() : false;">Xoá</a>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">1</a></li>
+                <li class="disabled"><a href="#">2</a></li>
+                <li class="disabled"><a href="#">3</a></li>
+                <li class="disabled"><a href="#">4</a></li>
+                <li class="disabled"><a href="#">5</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="RightNav">
+        @Html.Partial("~/Areas/Admin/Views/Shared/_RightNav.cshtml")
+    </div>
+</div>
+
+
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>

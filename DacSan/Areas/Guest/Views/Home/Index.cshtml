@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+
+<section id="layout_body">
+    <div style="padding: 10px">
+        <nav>
+            <div id="mySidenav" class="sidenav">
+                @Html.Partial("~/Areas/Guest/Views/Shared/_LeftNavbar.cshtml")
+            </div>
+        </nav>
+        <article>
+            @Html.Partial("~/Areas/Guest/Views/Shared/_Banner.cshtml")
+        </article>
+    </div>
+    <div style="margin-top: 400px">
+        @Html.Partial("~/Areas/Guest/Views/Home/_Home.cshtml")
+    </div>
+</section>
+
+

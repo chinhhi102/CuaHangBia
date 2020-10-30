@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[tbl_LoaiSP]
+(
+	[LoaiSPID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [TenLoaiSP] NVARCHAR(50) NOT NULL
+)

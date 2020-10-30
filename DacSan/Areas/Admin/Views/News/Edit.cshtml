@@ -1,0 +1,70 @@
+﻿@model DataLibrary.Models.NewFolder1.tbl_TinTuc
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+
+        @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h1 class="header">Sửa tin tức</h1>
+                <hr />
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Error"]</div>
+                }
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model=>model.TinTucID, new { @type="hidden",@Value=Model.TinTucID})
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" ,} })
+                        @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" ,@Value=Model.NoiDung.ToString()})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" ,@Value=Model.TieuDe.ToString()})
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="ImageFile" enctype="mutipart/form-data" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Sửa" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div id="RightNav">
+        @Html.Partial("~/Areas/Admin/Views/Shared/_RightNav.cshtml")
+    </div>
+</div>
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>
+

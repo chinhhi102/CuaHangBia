@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[tbl_LienHe]
+(
+	[LienHeID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [HoTen] NVARCHAR(50) NULL, 
+    [Email] NVARCHAR(50) NULL, 
+    [SDT] NVARCHAR(20) NULL, 
+    [LoiNhan] NVARCHAR(MAX) NULL, 
+    [TrangThai] INT NULL DEFAULT 1
+)

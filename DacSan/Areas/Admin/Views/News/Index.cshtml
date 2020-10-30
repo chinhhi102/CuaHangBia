@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@model IPagedList<DataLibrary.Models.NewFolder1.tbl_TinTuc>
+
+
+<div class="row">
+    <div class="col-md-8">
+
+
+        <h1>Quản Lý Tin tức</h1>
+        <a href="/Admin/News/Create">
+            <input class="btn btn-info" type="button" value="Thêm Tin Tức">
+        </a>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nội dung</th>
+                    <th>Ngày viết </th>
+                    <th>Tiêu đề</th>
+                    <th>Hình ảnh</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <div class="alert alert-info">Hiện không có sản phẩm nào</div>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td> @item.TinTucID </td>
+                            <td> @item.NoiDung </td>
+                            <td> @item.NgayViet </td>
+                            <td> @item.TieuDe</td>
+                            <td> <img src="@item.ImagePath" width="50" height="50" /></td>
+                            <td>
+                                <a href="/Admin/News/Edit?id=@item.TinTucID">Sửa</a>&nbsp;  <form id="myform" method="post" action="/Admin/News/Delete?id=@item.TinTucID" style="float:left; margin-left: 10px;">
+                                    <a class="label label-danger" onclick="confirm('Bạn có muốn xoá tin tức này không ?') ? document.getElementById('myform').submit() : false;">Xoá</a>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+
+        @Html.PagedListPager(Model, page => Url.Action("", new { page, pageSize = Model.PageSize }))
+
+    </div>
+    <div id="RightNav">
+        @Html.Partial("~/Areas/Admin/Views/Shared/_RightNav.cshtml")
+    </div>
+</div>
+
+
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>
+
+
